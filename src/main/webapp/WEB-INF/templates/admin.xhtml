@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <f:view locale="#{languageSwitcher.locale}">
+    <h:head>
+        <title>Shizi</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <!--  jquery core -->
+        <h:outputScript name="js/jquery/jquery-1.4.1.min.js"/>
+        <!-- Custom jquery scripts -->
+        <h:outputScript name="js/jquery/custom_jquery.js"/>
+        <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
+        <h:outputScript name="js/jquery/jquery.pngFix.pack.js"/>
+        <h:outputScript>
+	        $(document).ready(function(){
+				$(document).pngFix( );
+			});
+        </h:outputScript>
+    </h:head>
+    <h:body>
+        <div id="container">
+        	<ui:insert name="content">
+                    [Template content will be inserted here]
+            </ui:insert>
+        </div>
+    </h:body>
+    </f:view>
+</html>

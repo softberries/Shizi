@@ -8,27 +8,57 @@
     <h:head>
         <title>Java EE 6 Starter Application</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <h:outputStylesheet name="css/screen.css"/>
+        <h:outputStylesheet name="css/front.css"/>
+        <h:outputStylesheet name="css/default.css"/>
+        <!--  jquery core -->
+        <h:outputScript name="js/jquery.js"/>
+        <h:outputScript name="js/jquery.pop.js"/>
     </h:head>
     <h:body>
-        <div id="container">
-        	<div id="top_menu">
-		   	  <h:form id="langauge_form">
-		   	  <h:commandLink action="#{languageSwitcher.changeLanguage('pl')}" value="Polski" /> | 
-		   	  <h:commandLink action="#{languageSwitcher.changeLanguage('en')}" value="English" />
-		   	  </h:form>
-		   	  <ui:fragment rendered="#{identity.loggedIn}">
-				<div>Currently logged in as: <b>#{identity.user.id}</b></div>
+        <div id="full_container">
+        	<div id="topnav" class="topnav"> 
+        	<div id="language_switcher">
+	        	<h:form id="langauge_form">
+			   	  <h:commandLink action="#{languageSwitcher.changeLanguage('pl')}" value="Polski" /> | 
+			   	  <h:commandLink action="#{languageSwitcher.changeLanguage('en')}" value="English" />
+			   	</h:form>
+        	</div>
+        	<ui:fragment rendered="#{identity.loggedIn}">
+				<div id="loggedin_info">
+				Currently logged in as: <b>#{identity.user.id}</b>
 				<h:form>
-					<h:commandButton id="logout" value="Log out" action="#{identity.logout}" />
+					<h:commandButton id="logout" value="Log out" action="#{identity.logout}" styleClass="signout"/>
 				</h:form>
+				</div>
 		   	  </ui:fragment>
 		   	  <ui:fragment rendered="#{not identity.loggedIn}">
-				<h:form>
-					<h:commandButton id="login" value="Log In" action="login" />
-				</h:form>
+				Have an account? <a href="login" class="signin"><span>Sign in</span></a>
 		   	  </ui:fragment>
+        	</div><!-- end topnav -->
+        	
+			    <h:form id="signin">
+			    <fieldset id="signin_menu">
+			      <p>
+			      <label for="username">Username or email</label>
+			      <h:inputText id="username" name="username" value="#{credentials.username}" title="username" tabindex="4" type="text"/>
+			      </p>
+			      <p>
+			        <label for="password">Password</label>
+			        <h:inputSecret id="password" name="password" value="#{credentials.password}" title="password" tabindex="5" type="password"/>
+			      </p>
+			      <p class="remember">
+			        <h:commandButton id="signin_submit" value="LOGIN" action="#{identity.login}" tabindex="6"/>
+			        <input id="remember" name="remember_me" value="1" tabindex="7" type="checkbox"/>
+			        <label for="remember">Remember me</label>
+			      </p>
+			      <p class="forgot"> <a href="#" id="resend_password_link">Forgot your password?</a> </p>
+			      <p class="forgot-username"> <a id="forgot_username_link" title="If you remember your password, try logging in with your email" href="#">Forgot your username?</a> </p>
+			      </fieldset>
+			    </h:form>
+			
+        	<div id="top_menu">
 		   	  <h1>Shizi</h1>
+		   	  <h:messages />
 		      <h:form id="menu_form">
 		      <ul>
 		        <li><h:commandLink action="index" value="#{msg['Dashboard']}"/></li>
@@ -40,6 +70,33 @@
                     [Template content will be inserted here]
             </ui:insert>
         </div>
+        <h:outputScript>
+        $(document).ready(function() {
+
+            $(".signin").click(function(e) {          
+				e.preventDefault();
+                $("fieldset#signin_menu").toggle();
+				$(".signin").toggleClass("menu-open");
+            });
+			
+			$("fieldset#signin_menu").mouseup(function() {
+				return false;
+			});
+			$(document).mouseup(function(e) {
+				if($(e.target).parent("a.signin").length==0) {
+					$(".signin").removeClass("menu-open");
+					$("fieldset#signin_menu").hide();
+				}
+			});			
+			
+        });
+		</h:outputScript>
+        <h:outputScript name="js/jquery.tipsy.js"/>
+		<h:outputScript>
+		    $(function() {
+			  $('#forgot_username_link').tipsy({gravity: 'w'});   
+		    });
+		</h:outputScript>
     </h:body>
     </f:view>
 </html>

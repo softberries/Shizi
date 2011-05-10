@@ -32,7 +32,7 @@
 				</div>
 		   	  </ui:fragment>
 		   	  <ui:fragment rendered="#{not identity.loggedIn}">
-				Have an account? <a href="login" class="signin"><span>Sign in</span></a>
+		   	  <h:form><h:commandLink action="register" value="#{msg['Register']}" styleClass="register_link"/></h:form>&nbsp;|&nbsp;Have an account? <a href="login" class="signin"><span>Sign in</span></a>
 		   	  </ui:fragment>
         	</div><!-- end topnav -->
         	
@@ -61,7 +61,7 @@
 		   	  <h:messages />
 		      <h:form id="menu_form">
 		      <ul>
-		        <li><h:commandLink action="index" value="#{msg['Dashboard']}"/></li>
+		        <li><h:commandLink action="/index" value="#{msg['Dashboard']}"/></li>
 		      	<li><h:commandLink action="/app/test" value="#{msg['Catalogue']}"/></li>
 		      </ul>
 		      </h:form>

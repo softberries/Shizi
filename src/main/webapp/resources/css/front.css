@@ -68,10 +68,17 @@ a img {
 	border-width:0;
 }
 #topnav {
-	padding:10px 25px 12px;
+	padding:3px 25px 12px;
 	font-size:11px;
 	line-height:23px;
 	text-align:right;
+	background-color: #333;
+}
+#topnav a.register_link{
+	color: #FFF;	
+}
+.registerForm{
+	display: inline;	
 }
 #topnav a.signin {
 	background:#88bbd4;
@@ -143,6 +150,25 @@ a.signin.menu-open span {
 	font-size:11px;
 	right: 23px;
 	top: 27px;
+}
+#register_menu{
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	background-color:#ddeef6;
+	position: relative;
+	width:500px;
+	border:1px transparent;
+	text-align:left;
+	padding:10px;
+	margin-left:-8px;
+	*margin-left:-15px;
+	margin-top:5px;
+	color:#789;
+	font-size:11px;
 }
 
 #signin_menu input[type=text], #signin_menu input[type=password] {

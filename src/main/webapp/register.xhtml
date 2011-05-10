@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <div id="register">
+	<h:form id="register_form">
+	    <fieldset id="register_menu">
+	      <p>
+	      <label for="username">Username or email address:</label>
+	      <h:inputText id="username" name="username" value="" title="username" tabindex="4" type="text"/>
+	      </p>
+	      <p>
+	        <label for="password">Password:</label>
+	        <h:inputSecret id="password" name="password" value="" title="password" tabindex="5" type="password"/>
+	      </p>
+	      <p>
+	        <label for="password">Confirm password:</label>
+	        <h:inputSecret id="confirm_password" name="confirm_password" value="" title="password" tabindex="5" type="password"/>
+	      </p>
+	      <p>
+	        <h:commandButton id="register_submit" value="REGISTER" action="index" tabindex="6"/>
+	      </p>
+	    </fieldset>
+	</h:form>
+	</div>
+    </ui:define>
+</ui:composition>
